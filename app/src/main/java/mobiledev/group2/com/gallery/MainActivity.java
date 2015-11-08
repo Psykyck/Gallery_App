@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity
 
     private GridView gridView;
     private GridViewAdapter gridAdapter;
+    private static final String TAG = "MainActivity";
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -181,6 +183,41 @@ public class MainActivity extends AppCompatActivity
             super.onAttach(activity);
             ((MainActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
+        }
+
+        @Override
+        public void onSaveInstanceState(Bundle savedInstanceState) {
+            super.onSaveInstanceState(savedInstanceState);
+            Log.i(TAG, "onSaveInstanceState");
+        }
+
+        @Override
+        public void onStart() {
+            super.onStart();
+            Log.d(TAG, "onStart() called");
+        }
+
+        @Override
+        public void onPause() {
+            super.onPause();
+            Log.d(TAG, "onPause() called");
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            Log.d(TAG, "onResume() called");
+        }
+        @Override
+        public void onStop() {
+            super.onStop();
+            Log.d(TAG, "onStop() called");
+        }
+
+        @Override
+        public void onDestroy() {
+            super.onDestroy();
+            Log.d(TAG, "onDestroy() called");
         }
     }
 
